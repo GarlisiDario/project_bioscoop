@@ -2,37 +2,55 @@ import mysql.connector
 from tkinter import ttk
 import tkinter as tk
 
-db = mysql.connector.connect(
+class MainScreen:
+    def __init__(self):
+        self.db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            passwd="root",
+            database="bioscoop"
+        )
 
-    host="localhost",
-    user="root",
-    passwd ="root",
-    database ="bioscoop"
+        self.my_w = tk.Tk()
+        self.my_w.geometry("400x280")
+        self.my_w.title("Home Log In Bios")
 
-)
-def toon_menu():
-    print("1:new persoon toevoegen")
+        self.create_menu()
 
 
-def new_person():
-    first_name = input("Geef u naam in:")
-    last_name = input("Geef u achternaam in:")
-    phone = input("Geef u telefoonnummer in:")
-    email = input("Geef u email in:")
-    cursor = db.cursor()
-    sql = "INSERT INTO customer (first_name, last_name, phone, email) VALUES (%s, %s, %s, %s)"
-    val = (first_name, last_name, phone, email)
-    cursor.execute(sql, val)
-    print("record toegevoegd.")
-    db.commit()
-###################################
-#hoofdprogramma
-##############################
-keuze = ""
-toon_menu()
-while not keuze == "stop":
-    keuze = input("wat wil je doen?")
-    if keuze == "1":
-        new_person()
-        toon_menu()
-        keuze = input("wat wil je doen?")
+
+
+    def create_menu(self):
+        menu_bar = tk.Menu(self.my_w)
+
+        #maak hier de menu aan.
+        file_menu = tk.Menu(menu_bar, tearoff=0)
+        file_menu.add_command(label="Gebruiker/Klant",command= self.add_movies)
+        file_menu.add_command(label="Personeel",command= self.add_seats)
+        file_menu.add_command(label="Quit", command= self.quit)
+        menu_bar.add_cascade(label="Menu", menu=file_menu)
+
+        self.my_w.config(menu=menu_bar)
+
+    def add_movies(self):
+        pass
+
+    def add_employee(selfs):
+        pass
+
+    def add_seats(self):
+        pass
+
+    def add_zaal(self):
+        pass
+
+    def quit(self):
+        self.my_w.quit()
+
+    def run(self):
+        self.my_w.mainloop()
+
+if __name__ == "__main__":
+    app = MainScreen()
+    app.run()
+
