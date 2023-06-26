@@ -12,6 +12,13 @@ from crud import *
 
 
 class Menu():
+    def back_button(self):
+        self.master.destroy()
+        root = tk.Tk()
+        menu = Menu(root)
+        root.mainloop()
+
+
     def button1_click(self):
         self.master.destroy()
         app = FilmsApp()
@@ -93,13 +100,13 @@ class Menu():
         self.frame2 = Frame(self.login_window, width=180, height=2, bg='red4').place(x=400, y=240)
 
         # button confirm your ready
-        self.submit_button = tk.Button(self.login_window, text="Log In", command=self.button2_click
+        self.submit_button = tk.Button(self.login_window, text="Log In", command=self.login_user
                                        ,font=('Open Sans',16,'bold'),bg="red4", fg='white',activeforeground='red4')
         self.submit_button.place(x=500,y=280)
 
         #button for going back to mainmenu
 
-        self.back_button= tk.Button(self.login_window,text="Back",command=self.back_to_main_menu,
+        self.back_button= tk.Button(self.login_window,text="Back",command=self.back_button,
                                     font=('Open Sans',16,'bold'),bg="red4", fg='white',activeforeground='red4')
         self.back_button.place(x=400,y=280)
 
@@ -126,12 +133,8 @@ class Menu():
                 messagebox.showerror("Error","invalid username or password")
             else:
                 messagebox.showinfo("Welcome","Login is Sucessful")
+                self.button2_click()
 
-
-    def back_to_main_menu(self):
-        self.login_window.destroy()
-    def destroy_first_window(self):
-        self.master.destroy()
 
 
 
