@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Groepswerk_Seat_selection/.idea/Groepswerk_Seat_selection.iml" filepath="$PROJECT_DIR$/../Groepswerk_Seat_selection/.idea/Groepswerk_Seat_selection.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/project_bioscoop.iml" filepath="$PROJECT_DIR$/.idea/project_bioscoop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../python_examen/.idea/python_examen.iml" filepath="$PROJECT_DIR$/../python_examen/.idea/python_examen.iml" />
     </modules>
   </component>
 </project>

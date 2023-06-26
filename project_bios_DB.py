@@ -1,10 +1,28 @@
+from PIL import Image, ImageTk
+from PIL import *
 from tkinter import *
 import tkinter as tk
 import mysql.connector
-from PIL import ImageTk
 from tkinter import messagebox
+
+import crud
+from films import FilmsApp
+from crud import *
+
+
+
 class Menu():
-    def __init__(self, master):
+    def button1_click(self):
+        self.master.destroy()
+        app = FilmsApp()
+        app.mainloop()
+    def button2_click(self):
+        self.master.destroy()
+        root = Tk()
+        app = Window(root)
+        root.wm_title("Tkinter window")
+        root.mainloop()
+    def __init__(self,master):
         self.master = master
         self.master.title("Menu")
         self.master.geometry("600x304")
@@ -20,7 +38,7 @@ class Menu():
         self.label.place(x=75,y=65)
 
         # Create a button for adding data
-        self.customer_button = tk.Button(self.master, text="Customer", command=self.login_user
+        self.customer_button = tk.Button(self.master, text="Customer", command=self.button1_click
                                        , font=('Open Sans', 16, 'bold'), bg="red4", fg='white', activeforeground='red4')
         self.customer_button.place(x=100,y=100)
 
@@ -75,13 +93,13 @@ class Menu():
         self.frame2 = Frame(self.login_window, width=180, height=2, bg='red4').place(x=400, y=240)
 
         # button confirm your ready
-        self.submit_button = tk.Button(self.login_window, text="Log In", command=self.login_user
+        self.submit_button = tk.Button(self.login_window, text="Log In", command=self.button2_click
                                        ,font=('Open Sans',16,'bold'),bg="red4", fg='white',activeforeground='red4')
         self.submit_button.place(x=500,y=280)
 
         #button for going back to mainmenu
 
-        self.back_button= tk.Button(self.login_window,text="Back",command=Menu(self.master),
+        self.back_button= tk.Button(self.login_window,text="Back",command=self.back_to_main_menu,
                                     font=('Open Sans',16,'bold'),bg="red4", fg='white',activeforeground='red4')
         self.back_button.place(x=400,y=280)
 
@@ -110,6 +128,15 @@ class Menu():
                 messagebox.showinfo("Welcome","Login is Sucessful")
 
 
+    def back_to_main_menu(self):
+        self.login_window.destroy()
+    def destroy_first_window(self):
+        self.master.destroy()
+
+
+
+
+
 
 
 
@@ -119,7 +146,8 @@ class Menu():
 
 
 # Create a Tkinter instance and run the mainloop
-root = tk.Tk()
-menu = Menu(root)
-root.mainloop()
+if __name__ == "__main__":
+    root = tk.Tk()
+    menu = Menu(root)
+    root.mainloop()
 
